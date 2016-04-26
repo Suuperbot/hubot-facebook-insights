@@ -21,16 +21,17 @@ module.exports = function(robot) {
         client_id: process.env.FB_CLIENT_ID,
         client_secret: process.env.FB_CLIENT_SECRET,
         grant_type: "client_credentials"
-      }, function (resFB) {
-        if(!resFB || resFB.error) {
-          return res.send(!resFB ? "error occurred" : resFB.error.message);
+      }, function (responseToken) {
+
+        if(!responseToken || responseToken.error) {
+          return res.send(!responseToken ? "error occurred" : responseToken.error.message);
         }
 
-        var accessToken = resFB.access_token;
-        var expires = resFB.expires ? resFB.expires : 0;
+        var accessToken = responseToken.access_token;
+        var expires = responseToken.expires ? responseToken.expires : 0;
 
-        FB.api(objectId, { fields: ["fan_count"], access_token: accessToken }, function (res) {
-          return res.send(res["fan_count"]+" fans");
+        FB.api(objectId, { fields: ["fan_count"], access_token: accessToken }, function (response) {
+          return res.send(response["fan_count"]+" fans");
         });
     });
   });
