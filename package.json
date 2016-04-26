@@ -1,7 +1,7 @@
 {
   "name": "hubot-facebook-api",
   "description": "A facebook api script for hubot",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Adriano Godoy <godoy.ccp@gmail.com>",
   "license": "MIT",
   "keywords": "hubot, hubot-scripts, hubot-facebook, hubot-facebook-api, facebook-api",
