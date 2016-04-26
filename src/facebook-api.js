@@ -14,7 +14,7 @@
 var FB = require("fb");
 
 module.exports = function(robot) {
-  return robot.hear(/fans\s+(\w+)/i, function(res) {
+  return robot.hear(/fb fans\s+(\w+)/i, function(res) {
     var objectId = res.match[1];
 
     FB.api("oauth/access_token", {
