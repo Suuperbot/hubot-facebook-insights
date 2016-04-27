@@ -1,26 +1,26 @@
-# hubot-facebook-api
+# hubot-facebook-insights
 
-A facebook api script for hubot
+A hubot script for some facebook insights
 
-See [`src/facebook-api.coffee`](src/facebook-api.coffee) for full documentation.
+See [`src/facebook-insights.coffee`](src/facebook-insights.coffee) for full documentation.
 
 ## Installation
 
 In hubot project repo, run:
 
-`npm install hubot-facebook-api --save`
+`npm install hubot-facebook-insights --save`
 
-Then add **hubot-facebook-api** to your `external-scripts.json`:
+Then add **hubot-facebook-insights** to your `external-scripts.json`:
 
 ```json
 [
-  "hubot-facebook-api"
+  "hubot-facebook-insights"
 ]
 ```
 
 ## Sample Interaction
 
 ```
-user1>> hubot hello
-hubot>> hello!
+user1>> fb fans PageNameOrFBid
+hubot>> 59367 fans
 ```

@@ -1,5 +1,5 @@
 // Description
-//   A facebook api script for hubot
+//   A hubot script for some facebook insights
 //
 // Configuration:
 //   FB_CLIENT_ID
