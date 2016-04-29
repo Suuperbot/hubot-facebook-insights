@@ -24,3 +24,8 @@ Then add **hubot-facebook-insights** to your `external-scripts.json`:
 user1>> fb fans PageNameOrFBid
 hubot>> 59367 fans
 ```
+
+```
+user1>> fb checkins PageNameOrFBid
+hubot>> 28631 checkins
+```
