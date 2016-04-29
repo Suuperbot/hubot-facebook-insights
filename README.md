@@ -29,3 +29,8 @@ hubot>> 59367 fans
 user1>> fb checkins PageNameOrFBid
 hubot>> 28631 checkins
 ```
+
+```
+user1>> fb talking about pageNameOrFBid
+hubot>> 5612 talking about
+```
