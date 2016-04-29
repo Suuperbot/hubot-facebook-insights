@@ -16,7 +16,7 @@
 var FB = require("fb");
 
 module.exports = function(robot) {
-  robot.hear(/fb fans\s+(\w+)/i, function(res) {
+  robot.hear(/fb fans\s+([\w\.]+)/i, function(res) {
     var objectId = res.match[1];
 
     FB.api("oauth/access_token", {
@@ -38,7 +38,7 @@ module.exports = function(robot) {
     });
   });
 
-  robot.hear(/fb checkins\s+(\w+)/i, function(res) {
+  robot.hear(/fb checkins\s+([\w\.]+)/i, function(res) {
     var objectId = res.match[1];
 
     FB.api("oauth/access_token", {
@@ -61,7 +61,7 @@ module.exports = function(robot) {
   });
 
 
-  robot.hear(/fb (talking|talking about)\s(?!about\s)+(\w+)/i, function(res) {
+  robot.hear(/fb (talking|talking about)\s(?!about\s)+([\w\.]+)/i, function(res) {
     var objectId = res.match[2];
 
     FB.api("oauth/access_token", {
