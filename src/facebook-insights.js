@@ -9,6 +9,7 @@
 //   fb fans pageNameOrFBid - Get fans count from page/object with name 'pageNameOrFBid'
 //   fb checkins pageNameOrFBid - Get checkins number from page/object with name 'pageNameOrFBid'
 //   fb talking(||talking about) pageNameOrFBid - Get talking about count from page/object with name 'pageNameOrFBid'
+//   fb posts(||lastest posts) pageNameOrFBid limit - Get 'limit' lastest posts from page/object with name 'pageNameOrFBid'
 //
 // Author:
 //   Adriano Godoy <godoy.ccp@gmail.com>
@@ -82,4 +83,33 @@ module.exports = function(robot) {
         });
     });
   });
+
+
+  robot.hear(/fb (posts|latest posts)\s(?!posts\s)+([\w\.]+)\s(\d+)/i, function(res) {
+    var objectId = res.match[2];
+    var limit = res.match[3];
+
+    FB.api("oauth/access_token", {
+        client_id: process.env.FB_CLIENT_ID,
+        client_secret: process.env.FB_CLIENT_SECRET,
+        grant_type: "client_credentials"
+      }, function (responseToken) {
+
+        if(!responseToken || responseToken.error) {
+          return res.send(!responseToken ? "error occurred" : responseToken.error.message);
+        }
+
+        var accessToken = responseToken.access_token;
+        var expires = responseToken.expires ? responseToken.expires : 0;
+
+        FB.api(objectId, { fields: ["posts.limit("+limit+")"], access_token: accessToken }, function (response) {
+          var result = response.posts.data.map(function(item) {
+            return item.created_time+"\n"+item.message;
+          }).join("\n-----\n\n");
+
+          return res.send(result);
+        });
+    });
+  });
+
 };
