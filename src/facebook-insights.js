@@ -9,7 +9,7 @@
 //   fb fans pageNameOrFBid - Get fans count from page/object with name 'pageNameOrFBid'
 //   fb checkins pageNameOrFBid - Get checkins number from page/object with name 'pageNameOrFBid'
 //   fb talking(||talking about) pageNameOrFBid - Get talking about count from page/object with name 'pageNameOrFBid'
-//   fb posts(||lastest posts) pageNameOrFBid limit - Get 'limit' lastest posts from page/object with name 'pageNameOrFBid'
+//   fb posts(||lastest posts) pageNameOrFBid limit - Get 'limit' lastest posts from page/object with name 'pageNameOrFBid'. Default value 'limit': 1
 //
 // Author:
 //   Adriano Godoy <godoy.ccp@gmail.com>
@@ -85,9 +85,9 @@ module.exports = function(robot) {
   });
 
 
-  robot.hear(/fb (posts|latest posts)\s(?!posts\s)+([\w\.]+)\s(\d+)/i, function(res) {
+  robot.hear(/fb (posts|latest posts)\s(?!posts\s)+([\w\.]+)\s?(\d+)?/i, function(res) {
     var objectId = res.match[2];
-    var limit = res.match[3];
+    var limit = res.match[3] || 1;
 
     FB.api("oauth/access_token", {
         client_id: process.env.FB_CLIENT_ID,
