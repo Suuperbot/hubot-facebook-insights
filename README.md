@@ -21,16 +21,22 @@ Then add **hubot-facebook-insights** to your `external-scripts.json`:
 ## Sample Interaction
 
 ```
-user1>> fb fans PageNameOrFBid
+user1>> fb fans {PageNameOrFBid}
 hubot>> 59367 fans
 ```
 
 ```
-user1>> fb checkins PageNameOrFBid
+user1>> fb checkins {PageNameOrFBid}
 hubot>> 28631 checkins
 ```
 
 ```
-user1>> fb talking about pageNameOrFBid
+user1>> fb talking about {pageNameOrFBid}
 hubot>> 5612 talking about
+```
+
+```
+user1>> fb posts {pageNameOrFBid} {limit}
+hubot>> 2016-05-06T09:18:19+0000
+This is a post example.
 ```
