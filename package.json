@@ -1,7 +1,7 @@
 {
   "name": "hubot-facebook-insights",
   "description": "A hubot script for some facebook api insights",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "author": "Adriano Godoy <godoy.ccp@gmail.com>",
   "license": "MIT",
   "keywords": "hubot, hubot-scripts, hubot-facebook, hubot-facebook-insights, facebook-insights, facebook api",
