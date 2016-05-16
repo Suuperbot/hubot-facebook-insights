@@ -18,6 +18,8 @@ Then add **hubot-facebook-insights** to your `external-scripts.json`:
 ]
 ```
 
+**Run `fb help` to list the avaliable methods.**
+
 ## Sample Interaction
 
 ```
