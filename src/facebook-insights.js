@@ -6,6 +6,7 @@
 //   FB_CLIENT_SECRET
 //
 // Commands:
+//   fb help - Returns a list of commands for this plugin
 //   fb fans pageNameOrFBid - Get fans count from page/object with name 'pageNameOrFBid'
 //   fb checkins pageNameOrFBid - Get checkins number from page/object with name 'pageNameOrFBid'
 //   fb talking(||talking about) pageNameOrFBid - Get talking about count from page/object with name 'pageNameOrFBid'
@@ -17,6 +18,18 @@
 var FB = require("fb");
 
 module.exports = function(robot) {
+
+  robot.hear(/fb help/i, function(res)
+  {
+    var helpTxt = "\nfb help - Returns a list of commands for this plugin\n" +
+    "fb fans pageNameOrFBid - Get fans count from page/object with name 'pageNameOrFBid'\n" +
+    "fb checkins pageNameOrFBid - Get checkins number from page/object with name 'pageNameOrFBid'\n" +
+    "fb talking(||talking about) pageNameOrFBid - Get talking about count from page/object with name 'pageNameOrFBid'\n" +
+    "fb posts(||lastest posts) pageNameOrFBid limit - Get 'limit' lastest posts from page/object with name 'pageNameOrFBid'. Default value 'limit': 1\n";
+
+    return res.send(helpTxt);
+  });
+
   robot.hear(/fb fans\s+([\w\.]+)/i, function(res) {
     var objectId = res.match[1];
 
