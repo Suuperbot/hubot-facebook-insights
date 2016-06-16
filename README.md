@@ -2,7 +2,7 @@
 
 A hubot script for some facebook insights
 
-See [`src/facebook-insights.coffee`](src/facebook-insights.coffee) for full documentation.
+See [`src/facebook-insights.js`](src/facebook-insights.js) for full documentation.
 
 ## Installation
 
