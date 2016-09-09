@@ -31,7 +31,7 @@ module.exports = function(robot) {
   });
 
   robot.hear(/fb fans?\s+("[\w .\-\[\]]+")/i, function(res) {
-    var objectId = res.match[1];
+    var objectId = res.match[1].replace(/"/g, '');;
 
     FB.api("oauth/access_token", {
         client_id: process.env.FB_CLIENT_ID,
@@ -53,7 +53,7 @@ module.exports = function(robot) {
   });
 
   robot.hear(/fb checkins?\s+("[\w .\-\[\]]+")/i, function(res) {
-    var objectId = res.match[1];
+    var objectId = res.match[1].replace(/"/g, '');;
 
     FB.api("oauth/access_token", {
         client_id: process.env.FB_CLIENT_ID,
@@ -76,7 +76,7 @@ module.exports = function(robot) {
 
 
   robot.hear(/fb (talking|talking about)\s(?!about\s)+("[\w .\-\[\]]+")/i, function(res) {
-    var objectId = res.match[2];
+    var objectId = res.match[2].replace(/"/g, '');;
 
     FB.api("oauth/access_token", {
         client_id: process.env.FB_CLIENT_ID,
@@ -99,7 +99,7 @@ module.exports = function(robot) {
 
 
   robot.hear(/fb (posts|latest posts)\s(?!posts\s)+("[\w .\-\[\]]+")\s?(\d+)?/i, function(res) {
-    var objectId = res.match[2];
+    var objectId = res.match[2].replace(/"/g, '');;
     var limit = res.match[3] || 1;
 
     FB.api("oauth/access_token", {
