@@ -7,10 +7,10 @@
 //
 // Commands:
 //   fb help - Returns a list of commands for this plugin
-//   fb fans pageNameOrFBid - Get fans count from page/object with name 'pageNameOrFBid'
-//   fb checkins pageNameOrFBid - Get checkins number from page/object with name 'pageNameOrFBid'
-//   fb talking(||talking about) pageNameOrFBid - Get talking about count from page/object with name 'pageNameOrFBid'
-//   fb posts(||lastest posts) pageNameOrFBid limit - Get 'limit' lastest posts from page/object with name 'pageNameOrFBid'. Default value 'limit': 1
+//   fb fans "Page Name or FB ID" - Get fans count from page/object with name 'pageNameOrFBid'
+//   fb checkins "Page Name or FB ID" - Get checkins number from page/object with name 'pageNameOrFBid'
+//   fb talking(||talking about) "Page Name or FB ID" - Get talking about count from page/object with name 'pageNameOrFBid'
+//   fb posts(||lastest posts) "Page Name or FB ID" limit - Get 'limit' lastest posts from page/object with name 'pageNameOrFBid'. Default value 'limit': 1
 //
 // Author:
 //   Adriano Godoy <godoy.ccp@gmail.com>
@@ -22,15 +22,15 @@ module.exports = function(robot) {
   robot.hear(/fb help/i, function(res)
   {
     var helpTxt = "\nfb help - Returns a list of commands for this plugin\n" +
-    "fb fans pageNameOrFBid - Get fans count from page/object with name 'pageNameOrFBid'\n" +
-    "fb checkins pageNameOrFBid - Get checkins number from page/object with name 'pageNameOrFBid'\n" +
-    "fb talking(||talking about) pageNameOrFBid - Get talking about count from page/object with name 'pageNameOrFBid'\n" +
-    "fb posts(||lastest posts) pageNameOrFBid limit - Get 'limit' lastest posts from page/object with name 'pageNameOrFBid'. Default value 'limit': 1\n";
+    "fb fans \"Page Name or FB ID\" - Get fans count from page/object with name 'pageNameOrFBid'\n" +
+    "fb checkins \"Page Name or FB ID\" - Get checkins number from page/object with name 'pageNameOrFBid'\n" +
+    "fb talking(||talking about) \"Page Name or FB ID\" - Get talking about count from page/object with name 'pageNameOrFBid'\n" +
+    "fb posts(||lastest posts) \"Page Name or FB ID\" limit - Get 'limit' lastest posts from page/object with name 'pageNameOrFBid'. Default value 'limit': 1\n";
 
     return res.send(helpTxt);
   });
 
-  robot.hear(/fb fans\s+([\w\.]+)/i, function(res) {
+  robot.hear(/fb fans?\s+("[\w .\-\[\]]+")/i, function(res) {
     var objectId = res.match[1];
 
     FB.api("oauth/access_token", {
@@ -52,7 +52,7 @@ module.exports = function(robot) {
     });
   });
 
-  robot.hear(/fb checkins\s+([\w\.]+)/i, function(res) {
+  robot.hear(/fb checkins?\s+("[\w .\-\[\]]+")/i, function(res) {
     var objectId = res.match[1];
 
     FB.api("oauth/access_token", {
@@ -75,7 +75,7 @@ module.exports = function(robot) {
   });
 
 
-  robot.hear(/fb (talking|talking about)\s(?!about\s)+([\w\.]+)/i, function(res) {
+  robot.hear(/fb (talking|talking about)\s(?!about\s)+("[\w .\-\[\]]+")/i, function(res) {
     var objectId = res.match[2];
 
     FB.api("oauth/access_token", {
@@ -98,7 +98,7 @@ module.exports = function(robot) {
   });
 
 
-  robot.hear(/fb (posts|latest posts)\s(?!posts\s)+([\w\.]+)\s?(\d+)?/i, function(res) {
+  robot.hear(/fb (posts|latest posts)\s(?!posts\s)+("[\w .\-\[\]]+")\s?(\d+)?/i, function(res) {
     var objectId = res.match[2];
     var limit = res.match[3] || 1;
 
